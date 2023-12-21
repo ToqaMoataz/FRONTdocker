@@ -18,8 +18,8 @@ COPY . .
 
 EXPOSE $PORT
 
-CMD ["npm", "install","node_moduls"]
-
 CMD ["npm", "install","react-scripts"]
+
+CMD ["npm", "install","node_moduls"]
 
 CMD ["npm", "start"]
