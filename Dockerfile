@@ -8,7 +8,7 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install && chmod 777 $APP_DIR
+RUN npm install && chmod -R 777 $APP_DIR
 
 RUN echo "building"
 
