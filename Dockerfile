@@ -8,7 +8,9 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install && mkdir /.npm && chown -R 1009220000:0 /.npm
+RUN mkdir /.npm && chown -R 1009220000:0 /.npm \
+    && mkdir -p /usr/src/app/node_modules && chown -R 1009220000:0 /usr/src/app/node_modules \
+    && mkdir -p /usr/src/app/node_modules/.cache && chown -R 1009220000:0 /usr/src/app/node_modules/.cache
 
 RUN echo "building"
 
