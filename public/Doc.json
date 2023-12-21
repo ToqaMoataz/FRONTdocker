@@ -1,0 +1,14 @@
+ [
+    {
+      "Doc" : "Ahmed",
+      "speciality" : "dentist"
+    },
+    { 
+        "Doc" : "scott",
+        "speciality" : "Pediatrician"
+    },
+    {
+        "Doc" : "motaz",
+        "speciality" : "Veterinarian"
+    }
+ ]  
