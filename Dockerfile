@@ -7,7 +7,7 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN chown -R root $APP_DIR && chown -R root ./
+RUN chown -R root $APP_DIR
 
 USER root
 
