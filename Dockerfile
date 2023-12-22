@@ -7,13 +7,7 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN chown -R node:node $APP_DIR
-
-USER node
-
-RUN npm install
-
-USER root
+RUN chown -R 1009220000:0 $APP_DIR
 
 COPY . .
 
