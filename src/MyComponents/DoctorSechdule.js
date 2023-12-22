@@ -1,13 +1,22 @@
 import axios from 'axios';
 import React from 'react';
 import{ useState, useEffect } from 'react';
+const Insert= async (pk) =>
+{
+  try{
+    const apiUrl = process.env.REACT_APP_API_URL;
+    await axios.post('${apiUrl}/doctor/appointment/${pk}>');
+  }
+  catch (error) {
+  console.error('Error canceling appointment:', error);}
+}
 const DSchedule = () => {
-
 const [doctors, setDoctors] = useState([]);
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await axios.get('/appointments.json');
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await axios.get('${apiUrl}/doctor/appointment/');
       setDoctors(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -29,8 +38,6 @@ fetchData();
         </thead>
         <tbody>
           {doctors.map((doctors, index) => {
-            // Use an if statement to conditionally render appointments with the name "osama"
-            if (doctors.Name.toLowerCase() =='ahmed') {
               return (
                 <tr key={index}>
                   <td>{doctors.Day}</td>
@@ -38,9 +45,6 @@ fetchData();
                   <td>{doctors.end}</td>
                 </tr>
               );
-            } else {
-              return null;
-            }
           })}
         </tbody>
         </table>
@@ -52,7 +56,7 @@ fetchData();
         <input type='text'/>
         <label className='organize'id='appointmentEnd'>end-Time</label>
         <input type='text'/>
-        <button className='organize'>Insert</button>
+        <button className='organize' onClick={Insert}>Insert</button>
         <button ><a href='/'>Back</a></button>
 
     </div>
