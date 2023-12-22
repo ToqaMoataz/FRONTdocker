@@ -20,13 +20,29 @@ const SignInPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+  };
+  
+  try {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const response = axios.post('${apiUrl}/register/', {
+      name,
+      email,
+      password,
+    });
 
-    // Clear the form fields
+    console.log('API Response:', response.data);
+
+    // Clear form fields after successful submission
     setName('');
     setEmail('');
     setPassword('');
-  };
-  
+
+    // Redirect or show a success message as needed
+  } catch (error) {
+    console.error('Error making API call:', error);
+    // Handle error scenarios here
+  }
+
   return (
     <div className="assign">
       <u><h1 className='header'><i>Sign In</i></h1></u>
@@ -67,7 +83,7 @@ const SignInPage = () => {
           />
         </label>
         <br />
-        <button className='Sign-button' type="button"><a href='/'>login</a></button>
+        <button className='Sign-button' type="button" onClick={handleSubmit}><a href='/'>login</a></button>
         <button className='Sign-button' type="submit"><a href='/SignUpPage'>Create Account</a></button>
       </form>
     </div>
