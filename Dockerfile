@@ -8,7 +8,7 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN mkdir /.npm && chown -R 1009220000:0 /.npm 
+RUN npm install react-scripts && mkdir /.npm && chown -R 1009220000:0 /.npm 
 
 RUN echo "building"
 
