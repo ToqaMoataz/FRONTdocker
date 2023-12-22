@@ -7,27 +7,17 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN chown -R 1009220000:0 $APP_DIR
-
-USER 1009220000
-
-RUN npm install
+RUN chown -R root $APP_DIR
 
 USER root
 
-COPY . .
-
-# Expose the port
-EXPOSE $PORT
-
-# Run the application
-CMD ["npm", "start"]
-
+RUN npm install
 
 COPY . .
 
 EXPOSE $PORT
 
 CMD ["npm", "start"]
+
 
 
