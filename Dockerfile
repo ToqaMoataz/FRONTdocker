@@ -11,7 +11,6 @@ RUN chown -R node:node $APP_DIR
 
 USER node
 
-
 RUN npm install
 
 USER root
