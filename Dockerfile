@@ -7,7 +7,7 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN chown -R root $APP_DIR && chmod +x node_modules/.bin/react-scripts
+RUN chown -R root $APP_DIR
 
 USER root
 
