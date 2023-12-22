@@ -7,7 +7,8 @@ const Pschedule = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('/patients.json');
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await axios.get('${apiUrl}/patient/appointments/<int:pk>/available');
             setPatients(response.data);
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -15,48 +16,27 @@ const Pschedule = () => {
         };
     fetchData();
       }, []);
-    function CLEAR()
+
+    const CLEAR= async (pk) =>
     {
-        if(array=="array1")
-        {setArray1([ ])}
-        else{setArray2([ ])}
-      
+      try{
+        const apiUrl = process.env.REACT_APP_API_URL;
+        await axios.delete('${apiUrl}/doctor/appointment/${pk}>');
+      }
+    catch (error) {
+      console.error('Error canceling appointment:', error);
     }
-    function ChangeDocName()
-    {
-        /*let i=document.getElementById("changeDoc").value;
-        let i1=document.getElementById("changeDoc2").value;
-        if(array==array1 && i!="")
-        {   const newData = [...array1];
-            newData[0] = i;
-            setArray1(newData);
-        }
-        else if(array==array2 && i1!="")
-        {
-            const newData = [...array2];
-            newData[0] = i1;
-            setArray2(newData);
-        }*/
     }
-    function ChangeSlot()
+    const ChangeDocName= async (pk) =>
     {
-       /* let in1=document.getElementById("changestart").value;
+        let i=document.getElementById("changeDoc").value;
+    }
+    const ChangeSlot= async (pk) =>
+    {
+        let in1=document.getElementById("changestart").value;
         let in2=document.getElementById("changeend").value;
         let in3=document.getElementById("changestart2").value;
         let in4=document.getElementById("changeend2").value;
-        if(array==array1 && in1!="" && in2!="" )
-        {   const newData = [...array1];
-            newData[2] = in1;
-            newData[3] = in2;
-            setArray1(newData);
-        }
-        else if(array==array2 && in3!="" && in4!="")
-        {
-            const newData = [...array2];
-            newData[2] = in3;
-            newData[3] = in4;
-            setArray2(newData);
-        }*/
     }
 
     return (
