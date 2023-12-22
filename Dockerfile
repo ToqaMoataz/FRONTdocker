@@ -1,6 +1,5 @@
 FROM node:lts-alpine
 
-# Set environment variables
 ENV APP_DIR=/usr/src/app
 ENV PORT=3000
 
@@ -8,12 +7,13 @@ WORKDIR $APP_DIR
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install react-scripts && mkdir /.npm && chown -R 1009220000:0 /.npm 
+RUN chown -R 1009220000:0 $APP_DIR && npm install
 
-RUN echo "building"
+USER root
 
 COPY . .
 
 EXPOSE $PORT
 
 CMD ["npm", "start"]
+
