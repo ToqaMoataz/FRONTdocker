@@ -36,7 +36,8 @@ const SignUpPage = () => {
 
     try {
       // Simulate an API call using axios.post
-      const response = await axios.post('/users.json', {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await axios.post('${apiUrl}/register/', {
         name,
         number,
         email,
@@ -154,4 +155,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUpPage
